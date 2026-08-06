@@ -1,0 +1,614 @@
+/* adaptif light dark */
+.backdrop-blur {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+/* transisi warna tema */
+body, .card, .navbar, .card-project {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+/* warna light mode */
+[data-bs-theme="light"] {
+    --bs-body-bg: #f8fafc;
+    --bs-body-color: #0f172a;
+}
+
+[data-bs-theme="light"] .navbar {
+    background-color: rgba(248, 250, 252, 0.85) !important;
+}
+
+[data-bs-theme="light"] .card-project,
+[data-bs-theme="light"] .card-custom {
+    background-color: #ffffff !important;
+    border: 1px solid rgba(0, 0, 0, 0.08) !important;
+    color: #0f172a !important;
+}
+
+[data-bs-theme="light"] .card-title {
+    color: #0f172a !important;
+}
+
+[data-bs-theme="light"] .brand-text {
+    color: #0f172a !important;
+}
+
+/* warna dark mode */
+[data-bs-theme="dark"] {
+    --bs-body-bg: #0f172a;
+    --bs-body-color: #f8fafc;
+}
+
+[data-bs-theme="dark"] .navbar {
+    background-color: rgba(15, 23, 42, 0.85) !important;
+}
+
+[data-bs-theme="dark"] .card-project,
+[data-bs-theme="dark"] .card-custom {
+    background-color: #1e293b !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    color: #f8fafc !important;
+}
+
+[data-bs-theme="dark"] .brand-text {
+    color: #ffffff !important;
+}
+
+/* teks untuk light atau dark mode */
+[data-bs-theme="light"] .code-text {
+    color: #334155 !important;
+}
+
+[data-bs-theme="dark"] .code-text {
+    color: #f8fafc !important;
+}
+
+[data-bs-theme="light"] .btn-outline-light {
+    color: #0f172a;
+    border-color: #cbd5e1;
+}
+
+/* warana utama */
+.text-primary-custom { color: #14b8a6; }
+.bg-primary-custom { background-color: #14b8a6; }
+.border-primary-custom { border-color: #14b8a6 !important; }
+
+/* Besar section */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 80px;
+    position: relative; 
+    overflow: hidden;
+}
+
+/* elemen sprite karakter */
+.pixel-character {
+    width: 100px; 
+    height: 100px; 
+    
+    cursor: pointer;
+    position: fixed;
+    bottom: 20px;
+    right: 10%;
+    z-index: 9999;
+
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    background-repeat: no-repeat;
+    
+    background-image: url('sprite/sprite_0 (2).png');
+    background-size: 1300px 100px;
+
+    animation: 
+        fallLoop 0.4s steps(3) infinite,
+        fallingDown 1.2s cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards;
+}
+
+/* elemen sprite kotak */
+.pixel-box {
+    position: fixed !important;
+    bottom: 20px !important;
+    right: calc(10% + 90px) !important;
+    width: 160px !important;
+    height: 160px !important;
+    z-index: 10000 !important;
+
+    overflow: hidden !important; 
+
+    image-rendering: pixelated !important;
+    image-rendering: crisp-edges !important;
+    background-repeat: no-repeat !important;
+
+    display: none;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.pixel-box.show-box {
+    display: block !important;
+    opacity: 1 !important;
+}
+
+/* sprite kotak */
+.pixel-box.box-spawning {
+    background-image: url('sprite/kotak.png') !important;
+    background-size: 960px 160px !important;
+    animation: boxSpawnAnim 2s steps(6) forwards !important;
+}
+
+.pixel-box.box-despawning {
+    background-image: url('sprite/kotak.png') !important;
+    background-size: 960px 160px !important;
+    animation: boxdeSpawnAnim 2s steps(6) reverse !important;
+}
+
+.pixel-box.box-idle {
+    background-image: url('sprite/kotak1.png') !important;
+    background-size: 640px 160px !important;
+    animation: boxIdleAnim 0.8s steps(4) infinite alternate !important;
+}
+
+.pixel-box.box-html {
+    background-image: url('sprite/tombol html.png') !important;
+    background-size: 1280px 160px !important;
+    animation: boxHtmlAnim 2s steps(8) forwards !important;
+}
+
+.pixel-box.box-css {
+    background-image: url('sprite/tombol css3.png') !important;
+    background-size: 1440px 160px !important;
+    animation: boxCssAnim 2s steps(9) forwards !important;
+}
+
+.pixel-box.box-js {
+    background-image: url('sprite/tombol js.png') !important;
+    background-size: 1440px 160px !important;
+    animation: boxJsAnim 3s steps(9) forwards !important;
+}
+
+.pixel-box.box-php {
+    background-image: url('sprite/tombol php.png') !important;
+    background-size: 1600px 160px !important;
+    animation: boxPhpAnim 2s steps(10) forwards !important;
+}
+
+.pixel-box.box-laravel {
+    background-image: url('sprite/tombol laravel.png') !important;
+    background-size: 1760px 160px !important;
+    animation: boxLaravelAnim 2s steps(11) forwards !important;
+}
+
+.pixel-box.box-nodejs {
+    background-image: url('sprite/tombol nodejs.png') !important;
+    background-size: 3360px 160px !important;
+    animation: boxNodejsAnim 3s steps(21) forwards !important;
+}
+
+.pixel-box.box-bootstrap {
+    background-image: url('sprite/tombol boostrap.png') !important;
+    background-size: 2560px 160px !important;
+    animation: boxBootstrapAnim 2s steps(16) forwards !important;
+}
+
+.pixel-box.box-mysql {
+    background-image: url('sprite/tombol mysql.png') !important;
+    background-size: 2560px 160px !important;
+    animation: boxMysqlAnim 2s steps(16) forwards !important;
+}
+
+.pixel-box.box-vscode {
+    background-image: url('sprite/tombol vscode.png') !important;
+    background-size: 6240px 160px !important;
+    animation: boxVscodeAnim 3.5s steps(39) forwards !important;
+}
+
+/* keyframes animasi kotak */
+@keyframes boxHtmlAnim {
+    from { background-position: 0px 0px; }
+    to   { background-position: -1280px 0px; }
+}
+
+@keyframes boxCssAnim {
+    from { background-position: 0px 0px; }
+    to   { background-position: -1440px 0px; }
+}
+
+@keyframes boxJsAnim {
+    from { background-position: 0px 0px; }
+    to   { background-position: -1440px 0px; }
+}
+
+@keyframes boxLaravelAnim {
+    from { background-position: 0px 0px; }
+    to   { background-position: -1760px 0px; }
+}
+
+@keyframes boxPhpAnim {
+    from { background-position: 0px 0px; }
+    to   { background-position: -1600px 0px; }
+}
+
+@keyframes boxNodejsAnim {
+    from { background-position: 0px 0px; }
+    to   { background-position: -3360px 0px; }
+}
+
+@keyframes boxBootstrapAnim {
+    from { background-position: 0px 0px; }
+    to   { background-position: -2560px 0px; }
+}
+
+@keyframes boxMysqlAnim {
+    from { background-position: 0px 0px; }
+    to   { background-position: -2560px 0px; }
+}
+
+@keyframes boxVscodeAnim {
+    from { background-position: 0px 0px; }
+    to   { background-position: -6240px 0px; }
+}
+
+@keyframes boxSpawnAnim {
+    from { background-position: 0px 0px; }
+    to   { background-position: -960px 0px; }
+}
+
+@keyframes boxdeSpawnAnim {
+    from { background-position: -960px 0px; }
+    to   { background-position: 0px 0px; }
+}
+
+@keyframes boxIdleAnim {
+    from { background-position: 0px 0px; }
+    to   { background-position: -640px 0px; }
+}
+
+/*animasi karakter */
+.pixel-character.landed {
+    animation: landSequence 2.5s steps(10) forwards !important;
+}
+
+.pixel-character.idle {
+    background-image: url('sprite/New Piskel (1).png') !important;
+    background-size: 500px 100px !important;
+    animation: idleLoop 0.8s steps(5) infinite !important;
+}
+
+.pixel-character.interact {
+    background-image: url('sprite/goat.png') !important; 
+    width: 200px !important;
+    height: 200px !important;
+    bottom: 20px !important; 
+    right: calc(10% - 50px) !important;
+    background-size: 2400px 200px !important;
+    animation: goatSprite 1.2s steps(12) infinite !important;
+}
+
+.pixel-character.grabbing {
+    background-image: url('sprite/grip.png') !important; 
+    width: 100px !important;
+    height: 100px !important;
+    bottom: 20px !important;
+    right: 10% !important;
+    background-size: 300px 100px !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    animation: grabSprite 0.4s steps(3) infinite !important;
+}
+
+.pixel-character.explode {
+    background-image: url('sprite/explosion.png') !important; 
+    width: 100px !important;
+    height: 100px !important;
+    bottom: 20px !important;
+    right: 10% !important;
+    background-size: 700px 100px !important;
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    animation: explosionSprite 0.7s steps(7) infinite !important;
+}
+
+
+/* keyframes sprite */
+@keyframes fallLoop {
+    from { background-position: 0px 0px; }
+    to   { background-position: -300px 0px; }
+}
+
+@keyframes fallingDown {
+    0%   { transform: translateY(-100vh); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes landSequence {
+    from { background-position: -300px 0px; }
+    to   { background-position: -1300px 0px; }
+}
+
+@keyframes idleLoop {
+    from { background-position: 0px 0px; }
+    to   { background-position: -500px 0px; }
+}
+
+@keyframes goatSprite {
+    from { background-position: 0px 0px; }
+    to   { background-position: -2400px 0px; }
+}
+
+@keyframes grabSprite {
+    from { background-position: 0px 0px; }
+    to   { background-position: -300px 0px; }
+}
+
+@keyframes explosionSprite {
+    from { background-position: 0px 0px; }
+    to   { background-position: -700px 0px; }
+}
+
+/* button skill cdoing */
+.skill-btn {
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    user-select: none;
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+.fs-7 {
+    font-size: 0.85rem;
+}
+
+.skill-btn:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: #14b8a6 !important;
+}
+
+.skill-btn:active {
+    transform: translateY(0) scale(0.96);
+}
+
+/* profile */
+.profile-img-wrapper {
+    position: relative;
+    max-width: 280px;
+    margin: 0 auto;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.profile-img {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.profile-img-frame {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    width: calc(100% - 20px);
+    height: calc(100% - 20px);
+    border: 2px solid #14b8a6;
+    border-radius: 0.375rem;
+    z-index: 1;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.profile-img-wrapper:hover .profile-img {
+    transform: translate(-10px, -10px) scale(1.02);
+    border-color: #14b8a6;
+    box-shadow: 0 10px 25px -5px rgba(20, 184, 166, 0.4) !important;
+}
+
+.profile-img-wrapper:hover .profile-img-frame {
+    transform: translate(12px, 12px);
+    background-color: rgba(20, 184, 166, 0.08);
+    box-shadow: 0 0 15px rgba(20, 184, 166, 0.3);
+}
+
+
+
+
+@keyframes shine {
+    0% { transform: translateX(-100%) translateY(-100%); }
+    100% { transform: translateX(100%) translateY(100%); }
+}
+
+/* alas project */
+.card-project {
+    background-color: #1e293b !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+                border-color 0.3s ease, 
+                box-shadow 0.3s ease;
+}
+
+.card-project:hover {
+    transform: translateY(-8px);
+    border-color: rgba(20, 184, 166, 0.5) !important;
+    box-shadow: 0 12px 24px -10px rgba(20, 184, 166, 0.25);
+}
+
+.card-project .card-img-wrapper {
+    position: relative;
+    width: 100%;
+    height: 190px;
+    overflow: hidden;
+    background-color: #0f172a;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.card-project .card-img-top {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card-project:hover .card-img-top {
+    transform: scale(1.06);
+}
+
+.badge-tech {
+    background-color: rgba(20, 184, 166, 0.12) !important;
+    color: #14b8a6 !important;
+    border: 1px solid rgba(20, 184, 166, 0.25);
+    padding: 0.4em 0.7em;
+    font-size: 0.75rem;
+    font-weight: 500;
+    border-radius: 0.375rem;
+}
+
+/* css main go */
+.card-maingo {
+    background-color: #1e1e2e;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-maingo:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4) !important;
+}
+
+.card-maingo .card-header {
+    background-color: #181825 !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    padding: 12px 16px;
+}
+
+.card-maingo .card-header small {
+    color: #a6adc8 !important;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.card-maingo .card-body {
+    color: #cdd6f4;
+    line-height: 1.6;
+    padding: 20px !important;
+}
+
+.card-maingo .text-info { color: #cba6f7 !important; }
+.card-maingo .text-warning { color: #f9e2af !important; }
+.card-maingo .text-success { color: #89b4fa !important; }
+.card-maingo .code-text { color: #f38ba8; margin-left: 6px; }
+.card-maingo .text-secondary { color: #6c7086 !important; font-style: italic; }
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLeft {
+    from { opacity: 0; transform: translateX(40px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.animate-fade-up { animation: fadeInUp 0.8s ease forwards; }
+.animate-fade-left { animation: fadeInLeft 0.8s ease forwards; }
+
+
+/* css untuk mobile*/
+
+@media (max-width: 991.98px) {
+    /* Navbar spacing di mobile */
+    .navbar-nav {
+        padding: 1rem 0;
+    }
+}
+
+@media (max-width: 768px) {
+    /* 1. Mencegah section terlalu tinggi di HP */
+    .hero-section {
+        min-height: auto;
+        padding-top: 90px;
+        padding-bottom: 50px;
+    }
+
+    /* 2. Ukuran judul agar tidak terpotong di layar sempit */
+    .display-3 {
+        font-size: 2.1rem !important;
+    }
+
+    /* 3. Skala karakter piksel diperkecil agar tidak menutupi tombol/teks */
+    .pixel-character {
+        transform: scale(0.6);
+        transform-origin: bottom right;
+        right: 5% !important;
+        bottom: 10px !important;
+    }
+
+    .pixel-box {
+        transform: scale(0.6);
+        transform-origin: bottom right;
+        right: calc(5% + 60px) !important;
+        bottom: 10px !important;
+    }
+
+    /* 4. Gambar Carousel di modal popup */
+    #projectCarousel .carousel-item img {
+        max-height: 55vh;
+        object-fit: contain;
+    }
+}
+
+@media (max-width: 576px) {
+    /* 5. Penyesuaian tombol skill di HP kecil */
+    .skill-btn {
+        padding: 0.35rem 0.65rem !important;
+        font-size: 0.78rem !important;
+    }
+
+    /* 6. Penyesuaian Foto Profil di Layar HP */
+    .profile-img-wrapper {
+        max-width: 220px;
+    }
+
+    .profile-img {
+        height: 250px;
+    }
+
+    .card-project .card-img-wrapper {
+        height: 160px;
+    }
+}
+
+/* contak */
+.contact-card {
+    border-radius: 12px !important;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    border-color: #14b8a6 !important;
+    box-shadow: 0 8px 20px rgba(20, 184, 166, 0.15);
+}
+
+.style-contact-desc {
+    line-height: 1.6;
+}
+
+/* esponsif untuk layar miobile */
+@media (max-width: 768px) {
+    .contact-card {
+        padding: 1.25rem !important;
+    }
+    
+    .contact-card span.fs-6 {
+        font-size: 0.85rem !important; /* Mencegah teks URL/email kepanjangan meluap di HP */
+    }
+}
